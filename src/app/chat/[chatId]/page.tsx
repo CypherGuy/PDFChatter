@@ -23,13 +23,10 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
   }
   const _chats = await db.select().from(chats).where(eq(chats.userId, userId));
   if (!_chats) {
-    console.log("No matches");
     return redirect("/");
   }
 
   if (!_chats.find((chat) => chat.id === parseInt(chatId))) {
-    console.log("No valid chats");
-
     return redirect("/");
   }
 
